@@ -123,39 +123,29 @@
                 <div><a href="?p=new2&type=link">บาร์ใหม่กว่า</a></div>
             </div>
         <?php
-         if($_GET[p]=='admin'){
-             include('admin.php');
-         }else if($_GET[p]=='sci'){
-             goCountVisitor($urlfile_sci);
-			 include('view/sci.html');
-		 }else if($_GET[p]=='new'){
-            goCountVisitor($urlfile_new);
-            include('view/new.html');
-        }else if($_GET[p]=='new2'){
-            goCountVisitor($urlfile_new2);
-            include('view/new2.html');
-        }else if($_GET[p]=='en'){
-            goCountVisitor($urlfile_en);
-            include('view/en.html');
-        }else{
-            include('view/home.html');
-            goCountVisitor($urlfile_index);
-        }
+	switch($_GET['p']){
+		case 'admin':	include('admin.php');          	break;
+		case 'sci': 	goCountVisitor($urlfile_sci);
+				include('view/sci.html');       break;
+		case 'new': 	goCountVisitor($urlfile_new);
+				include('view/new.html');       break;
+		case 'new2':	goCountVisitor($urlfile_new2);
+				include('view/new2.html');      break;
+		case 'en':  	goCountVisitor($urlfile_en);
+				include('view/en.html');        break;
+		default:    	goCountVisitor($urlfile_index);
+				include('view/home.html');
+	}
 
         //Store Data From LINK
-        if($_GET['type']=='link'){
-            goCountVisitor($urlfile_linkclick);
-        }else if($_GET['type']=='img'){
-            goCountVisitor($urlfile_linkimg);
-        }else if($_GET['type']=='en'){
-            goCountVisitor($urlfile_mapen);
-        }else if($_GET['type']=='sci'){
-            goCountVisitor($urlfile_mapsci);
-        }else if($_GET['type']=='new'){
-            goCountVisitor($urlfile_mapnew);
-        }else if($_GET['type']=='new2'){
-            goCountVisitor($urlfile_mapnew2);
-        }
+        switch($_GET['type']){
+		case 'link' :   goCountVisitor($urlfile_linkclick);   break;
+		case 'img'  :   goCountVisitor($urlfile_linkimg);     break;
+		case 'en'   :   goCountVisitor($urlfile_mapen);       break;
+		case 'sci'  :   goCountVisitor($urlfile_mapsci);      break;
+		case 'new'  :   goCountVisitor($urlfile_mapnew);      break;
+		case 'new2' :   goCountVisitor($urlfile_mapnew2);
+	}
 
         ?>
         </div>
